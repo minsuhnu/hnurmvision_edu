@@ -109,3 +109,9 @@ simulation/simulator/bin/daedalus
 
 仿真场景和靶车由 `simulation/simulator/config.toml` 配置。`[training] enabled=true` 时生成
 教学观察车和训练靶，设为 `false` 时回到手动场景。
+
+## 第一讲本地验证记录
+
+- 培训主程序和 Daedalus 仿真器分别通过 `./scripts/build_training.sh`、`./scripts/build_simulator.sh` 构建。
+- 运行时使用两个终端，先启动仿真器，再启动培训程序。
+- 当前培训 IO 仍是初始骨架，`read()` 尚未提供图像输入；启动仿真器不代表培训程序已经实现图像输入、检测、跟踪和瞄准功能。
