@@ -5,6 +5,8 @@ SIM_ROOT="$REPO_ROOT/simulation"
 source /opt/ros/humble/setup.bash
 source "$SIM_ROOT/install_interfaces/setup.bash"
 export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-89}
+export FASTRTPS_DEFAULT_PROFILES_FILE=${FASTRTPS_DEFAULT_PROFILES_FILE:-$REPO_ROOT/configs/fastdds_local.xml}
+export MALLOC_ARENA_MAX=${MALLOC_ARENA_MAX:-2}
 export WINIT_UNIX_BACKEND=${WINIT_UNIX_BACKEND:-x11}
 if [[ "$WINIT_UNIX_BACKEND" == x11 ]]; then
     # winit 0.30 selects Wayland from these variables, ignoring WINIT_UNIX_BACKEND.

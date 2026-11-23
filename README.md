@@ -1,5 +1,43 @@
 # 跃鹿战队算法组二阶段培训与考核
 
+## 第四讲实现与验收（2026-11-15）
+
+第四讲现已接入选板、IPPE 双候选位姿、灯条网格观测修正、基础状态机、匀速估速及可配置预测。原有第三讲检测代码保持不变。下方历史骨架描述保留供课程追溯；当前状态以 [第四讲验收报告](docs/lesson04_acceptance_report.md) 为准。
+
+```bash
+bash scripts/build_training.sh
+# 显示正常实时检测/跟踪，沿用原 ROS2 图像与 IMU 输入
+bash scripts/run_simulator.sh
+# 另一终端
+bash scripts/run_training.sh
+```
+
+参数位于 `configs/lesson04.yaml`；其模型针对直立仿真资产，纯 Pose 几何未获该观测模型支持。独立验收入口读取实际 PNG/同包元数据，目标真值只进入误差评价；与原 IO 的最近反馈配对限制分开记录。
+
+```bash
+# 复查最终录屏对应的真实输入；输出为独立 CSV/YAML，不覆盖原证据
+source /opt/ros/humble/setup.bash
+source simulation/install_interfaces/setup.bash
+./build/lesson04_demo \
+  submission/lesson04_evidence/run04/part2c2_dataset_1794757461917841187-33555 \
+  configs/lesson04.yaml /tmp/lesson04_review --no-gui
+```
+
+完整重采集需先构建当前 ROS2 仿真器（保持现有依赖，不必重新生成资产）：
+
+```bash
+source /opt/ros/humble/setup.bash
+source simulation/install_interfaces/setup.bash
+cargo +1.95.0 build --manifest-path simulation/simulator/Cargo.toml \
+  --release --locked --offline --no-default-features --features ros2 -j2
+# 在未运行其他本任务仿真进程时使用一个新的名称；脚本拒绝覆盖视频
+bash scripts/run_lesson04_acceptance.sh --run-name review01 --video lesson04_review01.mp4
+```
+
+该脚本通过本机 X11/GStreamer 录制真实程序窗口，使用独立仿真配置副本关闭自动瞄准，不连接真实硬件；自动选择静止靶和平移靶。现有系统 OpenCV 提供 H.264 编码，不依赖额外安装 FFmpeg。测试方式为 CMake 开启 `-DBUILD_LESSON04_PNP_TEST=ON` 后运行 `ctest --test-dir build --output-on-failure`。
+
+交付物：`submission/lesson04_demo.mp4`、`submission/screenshots/lesson04_static.png`、`submission/screenshots/lesson04_translation.png`、`submission/learning_summary.md`。另见 [算法说明](docs/lesson04_algorithm_notes.md)、[开源对比](docs/lesson04_open_source_comparison.md)、[开发基线](docs/lesson04_engineering_baseline.md)。
+
 本仓库是面向学员的自瞄教学骨架。
 
 ## 目录结构

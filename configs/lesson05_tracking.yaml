@@ -1,0 +1,77 @@
+# 适用于当前直立仿真靶。位置用米、时间用秒，重投影与关联门限用像素。
+# 灯条 AABB 端点用于 PnP 初值，网格投影用于后续修正。
+prediction_horizon_ms: 250.0
+reprojection_limit_px: 3.0
+association_gate_px: 100.0
+max_speed_mps: 8.0
+max_gap_s: 0.4
+temp_lost_s: 0.3
+velocity_window_s: 0.08
+confirm_frames: 3
+expected_model_normal_z: -0.25881904510252074
+normal_prior_weight_px: 1.0
+mesh_refinement_enabled: true
+models:
+  small:
+    name: small_GLB_virtual_lightbar_plane
+    version: GLB_AABB_centerline_20261115
+    asset_sha256: 1cc0a3cd1ab05bc9822b616271db3afb64d078e56b9bbf452a8acc6d9bad0a6f
+    points_m:
+    - - -0.06290216977112872
+      - -0.029789554358130233
+      - 0.0
+    - - 0.06289913774644634
+      - -0.02981854688792445
+      - 0.0
+    - - 0.06289913774644634
+      - 0.029793005493548852
+      - 0.0
+    - - -0.06290216977112872
+      - 0.029820406079049018
+      - 0.0
+    center_from_model_rotation:
+    - 0.9999999756257384
+    - -0.00022077888468832976
+    - 2.2817929524915647e-06
+    - -2.284591465763629e-06
+    - -1.2675386869728496e-05
+    - 0.9999999999170576
+    - -0.0002207788557474093
+    - -0.9999999755480091
+    - -1.267589095033108e-05
+    center_from_model_translation_m:
+    - 2.003057209858077e-08
+    - 0.009849933758219293
+    - -6.310386503390283e-05
+  large:
+    name: large_GLB_virtual_lightbar_plane
+    version: GLB_AABB_centerline_20261115
+    asset_sha256: e10fe48e41bbd4ffd89e5fc8359fa0ba5df656ce178d750b750c30eb7e2d1a4c
+    points_m:
+    - - -0.11039928502203289
+      - -0.029789405689087983
+      - 0.0
+    - - 0.11040180714085521
+      - -0.02981871179683385
+      - 0.0
+    - - 0.11040180714085521
+      - 0.029792853479537623
+      - 0.0
+    - - -0.11039928502203289
+      - 0.029820577819861784
+      - 0.0
+    center_from_model_rotation:
+    - 0.9999999925234673
+    - -0.0001220946484009491
+    - 6.779556285609205e-06
+    - -6.781107240703505e-06
+    - -1.2702482199394915e-05
+    - 0.9999999998963319
+    - -0.00012209456227109885
+    - -0.9999999924657719
+    - -1.2703310041328714e-05
+    center_from_model_translation_m:
+    - -1.0325351667542796e-06
+    - 0.009850503781508008
+    - 1.571150238360401e-05
+lamp_mesh_file: lesson04_lamp_meshes.json

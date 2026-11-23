@@ -342,8 +342,6 @@ fn image_copy_driver(world: &World, mut render_context: RenderContext) {
             (size.width as usize / block_dimensions.0 as usize) * block_size as usize,
         );
         let buffer_size = padded_bytes_per_row as u64 * size.height as u64;
-        let buffer = copier.acquire_buffer(render_context.render_device(), buffer_size);
-
         let snapshot: Vec<DynSnapshotSync> = copier
             .snapshots
             .iter()
@@ -352,6 +350,8 @@ fn image_copy_driver(world: &World, mut render_context: RenderContext) {
         if snapshot.is_empty() {
             continue;
         }
+        // A disabled dataset/depth sink must not allocate and immediately discard a GPU buffer every frame.
+        let buffer = copier.acquire_buffer(render_context.render_device(), buffer_size);
 
         render_context.command_encoder().copy_texture_to_buffer(
             TexelCopyTextureInfo {

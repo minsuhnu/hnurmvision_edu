@@ -46,5 +46,6 @@ struct Command {
   bool shoot = false;
   double yaw = 0;
   double pitch = 0;
+  double target_distance = 0;  // m，预测命中位置相对云台原点的距离
 };
 }  // namespace training

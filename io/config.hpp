@@ -6,6 +6,7 @@ namespace training {
 struct Config {
   bool display = true;
   bool allow_fire = false;
+  double fire_tolerance_rad = 0.01;
   std::array<double, 9> camera_matrix{
       1303.6753236814714, 0, 720, 0, 1303.6753236814714, 540, 0, 0, 1};
   std::array<double, 5> distort_coeffs{0, 0, 0, 0, 0};

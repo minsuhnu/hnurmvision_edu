@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 mod auto_gen;
 mod capture;
+mod capture_audit;
 mod components;
 mod config;
 mod training;
@@ -33,6 +34,25 @@ use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use clap::Parser;
 use std::sync::atomic::AtomicBool;
 
+#[derive(Resource, Default)]
+struct FrameDeadline(Option<std::time::Instant>);
+
+fn pace_application_frames(world: &mut World) {
+    let fps = world.resource::<SimulationConfig>().window.max_fps;
+    if !fps.is_finite() || fps <= 0.0 {
+        world.resource_mut::<FrameDeadline>().0 = None;
+        return;
+    }
+    let period = std::time::Duration::from_secs_f64(1.0 / fps.clamp(10.0, 240.0));
+    let now = std::time::Instant::now();
+    let next = world.resource::<FrameDeadline>().0.unwrap_or(now);
+    if next > now {
+        std::thread::sleep(next - now);
+    }
+    let after = std::time::Instant::now();
+    world.resource_mut::<FrameDeadline>().0 = Some(if after > next + period { after + period } else { next + period });
+}
+
 use crate::auto_gen::AutoGenPlugin;
 use crate::components::{CameraMode, FollowingType, ProjectileCooldown, SubscribeAutoAim};
 use crate::config::{ConfigPlugin, SimulationConfig};
@@ -57,6 +77,9 @@ struct Args {
     /// Enable auto dataset generation mode
     #[arg(long)]
     auto_gen: bool,
+    /// Opt-in post-noise RGB and same-extraction GT export (ROS2 only).
+    #[arg(long)]
+    audit_capture_out: Option<std::path::PathBuf>,
 }
 
 #[cfg(feature = "ros2")]
@@ -122,6 +145,12 @@ fn should_enable_talos_plugin(app: &App) -> bool {
 
 fn main() {
     let args = Args::parse();
+    // Fail before creating an application if the requested mode cannot bind to
+    // the ROS RGB capture path. Never silently export a different image source.
+    if args.audit_capture_out.is_some() && (args.auto_gen || !cfg!(feature = "ros2")) {
+        eprintln!("--audit-capture-out requires the ROS2 build and normal simulation mode");
+        return;
+    }
 
     // Auto-gen mode: minimal setup
     if args.auto_gen {
@@ -192,6 +221,8 @@ fn main() {
     }
 
     app.add_plugins(RoboMasterPlugins)
+        .init_resource::<FrameDeadline>()
+        .add_systems(Last, pace_application_frames)
         .add_plugins(scoreboard::ScoreboardPlugin)
         .add_plugins(ballistics::BallisticsPlugin)
         .add_plugins(DatasetPlugin)
@@ -326,6 +357,11 @@ fn main() {
                  (set DAEDALUS_FORCE_TALOS_CAPTURE=1 to override)"
             );
         }
+    }
+
+    #[cfg(feature = "ros2")]
+    if let Some(output) = args.audit_capture_out {
+        app.add_plugins(capture_audit::CaptureAuditPlugin { output });
     }
 
     app.run();

@@ -1,0 +1,173 @@
+{
+  "scope": "Lesson04 deliverables; existing user files and failed trial evidence preserved",
+  "files": [
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/CMakeLists.txt",
+      "bytes": 2476,
+      "sha256": "aec65307907af4df6b0500fcc2f6598c2aa0e94173e87b475bd4cd1090090cc0"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/include/tracking_state.hpp",
+      "bytes": 6491,
+      "sha256": "ca1011969fe91fd8a0d66c3d6c2a9e6be7d65e7bb2fd07a2957fea728e304efa"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/include/realtime_processor.hpp",
+      "bytes": 1166,
+      "sha256": "a6bee4215f988631f93eff60af06db8ebd74f08774d9d33547d3c5b7c2265529"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/lessons/lesson04_tracking.cpp",
+      "bytes": 16595,
+      "sha256": "854ff53d3af2497c9893c0b759eda2952753118ac2a3a87e7627215e85322424"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/src/lesson04_runtime.cpp",
+      "bytes": 20073,
+      "sha256": "f6e0955d68d22e2f8bff7511f422a858b040415cad7c685a1179548c8c00b4bd"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/src/lesson04_demo.cpp",
+      "bytes": 19308,
+      "sha256": "674e7b4f7527b7a0cc55972916e7a9746bb2f3f6c810cd65cc2746a7a787f9e8"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/src/realtime_processor.cpp",
+      "bytes": 2959,
+      "sha256": "cac9d95594dd6ce4e49de6d64d0bd85f3bfadb51f689047bdf4ca296807c002b"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/src/main.cpp",
+      "bytes": 13480,
+      "sha256": "aee6096ad055d5db4495991aabd31efe36dfeb6fc455aec6ad935cced156220b"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/configs/lesson04.yaml",
+      "bytes": 2256,
+      "sha256": "8c83081e80f39df7c9043894291af7e4d41255a9e57623602d56b6951464be5f"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/configs/lesson04_lamp_meshes.json",
+      "bytes": 79664,
+      "sha256": "c1d4bc5dab3b1a5ee407a9d64cfab1ca76758b4ba8670c0c4867a4587ec2094c"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/configs/lesson04_geometry_sources.json",
+      "bytes": 471,
+      "sha256": "3a4c7397e451a8f01dfc103da7299d2b0e4fe5b692ebad2dd9f5e8b9cf6fef98"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/test/lesson04_tracking_test.cpp",
+      "bytes": 5238,
+      "sha256": "63e33a7f6b86934e8013453e80700a7f646b9649db90ea5f3796cf99cad7e8a7"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/scripts/run_lesson04_acceptance.sh",
+      "bytes": 685,
+      "sha256": "f816fd8a269f121491de3e8d7e4b385b3d3a0fbe9d4db1ce2a395a137002a191"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/README.md",
+      "bytes": 6455,
+      "sha256": "e005715543afc97a3c545034e17485a33e07ae4ea8f8e246335baeadb4385d70"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/docs/lesson04_engineering_baseline.md",
+      "bytes": 5363,
+      "sha256": "60fd0d7ea308e8291c634d7f73413ebd5a2f68d33f4bdde5f5d4da52aef53f6e"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/docs/lesson04_algorithm_notes.md",
+      "bytes": 4985,
+      "sha256": "89162365c15666bafa15ce6281821da01775a9bd9fe7798f0915cb8b26dda70b"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/docs/lesson04_open_source_comparison.md",
+      "bytes": 3833,
+      "sha256": "7d10c0d46447a9e9ef6c0bd97775bbda225698fabd349559cb7d1e0c7b386b94"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/docs/lesson04_acceptance_report.md",
+      "bytes": 9369,
+      "sha256": "36a156a99436558325c37aa7e3d0568c55126fee84f4a46703754b4b6b5795f3"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/learning_summary.md",
+      "bytes": 604,
+      "sha256": "f2d4e088ab866882e0f4d959ce949fc6afba1ec7692792d4f877283517194a01"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_demo.mp4",
+      "bytes": 2027576,
+      "sha256": "d16bd180a54a1e6827311e686989e9426684762eda302bf90af14f47b28a7e27"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_demo.mp4.recording.json",
+      "bytes": 189,
+      "sha256": "e28644e8b91e9db4518d473f3f9c1037e520a8a84fc149bd46b98da1aaa04212"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/screenshots/lesson04_static.png",
+      "bytes": 619864,
+      "sha256": "cda7e41e8be326daaa6d2dd6a2a0056fcb6f91b08c7bb97d1a0ec27ab93f114a"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/screenshots/lesson04_translation.png",
+      "bytes": 624933,
+      "sha256": "39e14949cec9ef1cd27c6f1297f5b4a094a8f61cdf853c0a8ba7c9d2085cb391"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/run_lesson04_acceptance.py",
+      "bytes": 7492,
+      "sha256": "95d799a989693b044bcdda014beea64108f114ce248be3251bb173c1e2cdc6b4"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/record_lesson04_window.py",
+      "bytes": 2018,
+      "sha256": "9177421b629460cb3bf0c1408307dff7a39742066b257ea925e60e1821ff190e"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/lesson04_ros_audit.py",
+      "bytes": 1194,
+      "sha256": "2548e2de5c732ebd9450af230e3173a5535a1bfee5a278195c0ad0192a0bb798"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/lesson04_validate_capture.py",
+      "bytes": 6279,
+      "sha256": "8aeb667fd526fd7e005ae020072189a46867bbf2f4d148576506bc4ad1f590f8"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/lesson04_validate_video.py",
+      "bytes": 2657,
+      "sha256": "47d591d40242d077cc619478ec66ef5caabc545ea417c54fa668026613e96f59"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/tools/lesson04_verify_geometry.py",
+      "bytes": 4701,
+      "sha256": "a906d05bdfbd6fafb4c278ce6372b8ab0db67cb565b4122a3271716c59f069bd"
+    },
+    {
+      "path": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_weekly_report.md",
+      "bytes": 7841,
+      "sha256": "4441a52e70d652e0c6ed078e33559894ba6f9dc851919ffe342786a30e19fbfe"
+    }
+  ],
+  "evidence_root": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_evidence",
+  "accepted_runs": [
+    "run02",
+    "run04"
+  ],
+  "failed_or_partial_trials": [
+    "run01",
+    "run03"
+  ],
+  "raw_capture_manifests": [
+    "/home/minsu/RM/hnurmvision_edu/submission/lesson04_evidence/run02/part2c2_dataset_1794757126741119381-32497/manifest.json",
+    "/home/minsu/RM/hnurmvision_edu/submission/lesson04_evidence/run04/part2c2_dataset_1794757461917841187-33555/manifest.json"
+  ],
+  "review_date": "2026-11-16",
+  "ready_directory": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_ready",
+  "weekly_report_status": "completed; full report and approximately 200-character summary included in ready directory",
+  "review_evidence": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_evidence/review_20261116",
+  "weekly_report_revision_evidence": "/home/minsu/RM/hnurmvision_edu/submission/lesson04_evidence/weekly_revision_20261116"
+}

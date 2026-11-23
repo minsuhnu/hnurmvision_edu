@@ -1,0 +1,9 @@
+{
+  "method": "actual X11 window pixels via GStreamer ximagesrc",
+  "xid": 85983235,
+  "frames": 884,
+  "fps": 20,
+  "wall_duration_s": 44.26915896399987,
+  "width": 1280,
+  "height": 960
+}

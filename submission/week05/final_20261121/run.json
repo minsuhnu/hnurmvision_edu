@@ -1,0 +1,40 @@
+{
+  "actions": [
+    {
+      "key": "F8",
+      "monotonic": 385.881655942
+    },
+    {
+      "key": "F7",
+      "monotonic": 386.062534859
+    },
+    {
+      "key": "F7",
+      "monotonic": 416.272537585
+    },
+    {
+      "key": "F9",
+      "monotonic": 416.958301921
+    },
+    {
+      "key": "F6",
+      "monotonic": 417.253550019
+    },
+    {
+      "key": "F7",
+      "monotonic": 419.436169256
+    },
+    {
+      "key": "F7",
+      "monotonic": 449.646655572
+    },
+    {
+      "key": "F9",
+      "monotonic": 450.203201753
+    }
+  ],
+  "simulator_returncode": 0,
+  "training_returncode": 0,
+  "seconds_per_scene": 30.0,
+  "recorded": true
+}

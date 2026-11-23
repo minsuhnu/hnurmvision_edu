@@ -1,0 +1,51 @@
+{
+  "method": "Offline recovery of p+v*t horizon from logged observed position, velocity and commanded yaw; no target truth used by controller",
+  "examples": [
+    {
+      "frame": 2142,
+      "position_m": [
+        -0.302318495398,
+        -2.61900667833,
+        -0.206777384102
+      ],
+      "velocity_mps": [
+        -0.641743170663,
+        -0.127794820283,
+        0.00338444739825
+      ],
+      "command_yaw_rad": -1.7204263525,
+      "inferred_prediction_horizon_s": 0.1486232792519068,
+      "logged_age_s": 0.042653582999999995,
+      "inferred_flight_s": 0.1059696962519068,
+      "predicted_position_m": [
+        -0.3976964698594511,
+        -2.6379999635918674,
+        -0.2062743764312165
+      ],
+      "yaw_lead_deg": -1.98851663051755
+    },
+    {
+      "frame": 2204,
+      "position_m": [
+        -0.343137610035,
+        -2.58750198577,
+        -0.20374494028
+      ],
+      "velocity_mps": [
+        0.536361336539,
+        0.502457555444,
+        0.0440880341992
+      ],
+      "command_yaw_rad": -1.67509266935,
+      "inferred_prediction_horizon_s": 0.1494272560274854,
+      "logged_age_s": 0.048275860999999996,
+      "inferred_flight_s": 0.10115139502748541,
+      "predicted_position_m": [
+        -0.26299060727674256,
+        -2.5124211319897247,
+        -0.19715698630596762
+      ],
+      "yaw_lead_deg": 1.578374463584164
+    }
+  ]
+}

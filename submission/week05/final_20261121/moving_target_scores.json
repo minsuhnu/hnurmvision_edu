@@ -1,0 +1,35 @@
+{
+  "damage_per_hit": 10.0,
+  "targets": [
+    {
+      "accuracy_percent": 100.0,
+      "damage": 2730.0,
+      "dps": 90.39844281499369,
+      "hits": 273,
+      "off_target": 0,
+      "shots": 273,
+      "target": 0,
+      "test_seconds": 30.19963524800005
+    },
+    {
+      "accuracy_percent": 93.0327868852459,
+      "damage": 2270.0,
+      "dps": 75.1259179968112,
+      "hits": 227,
+      "off_target": 0,
+      "shots": 244,
+      "target": 1,
+      "test_seconds": 30.215936930000012
+    },
+    {
+      "accuracy_percent": 0.0,
+      "damage": 0.0,
+      "dps": 0.0,
+      "hits": 0,
+      "off_target": 0,
+      "shots": 0,
+      "target": 2,
+      "test_seconds": 0.0
+    }
+  ]
+}

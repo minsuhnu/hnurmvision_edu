@@ -17,16 +17,22 @@ use std::sync::{Arc, Mutex};
 
 #[derive(Resource, Clone)]
 pub struct TopicPublisher<T: RosTopic> {
-    sender: Sender<T::T>,
+    sender: Arc<Mutex<Sender<T::T>>>,
 }
 
 impl<T: RosTopic> TopicPublisher<T> {
     pub(super) fn new(sender: Sender<T::T>) -> Self {
-        TopicPublisher { sender }
+        TopicPublisher { sender: Arc::new(Mutex::new(sender)) }
     }
 
     pub fn publish(&self, message: T::T) {
-        let mut sender = self.sender.clone();
+        // Large continuous sensor messages must not create an unbounded number of
+        // detached send futures (each cloned sender also reserves channel capacity).
+        if matches!(T::TOPIC, "/image_raw" | "/image_compressed" | "/livox/lidar") {
+            let _ = self.sender.lock().unwrap().try_send(message);
+            return;
+        }
+        let mut sender = self.sender.lock().unwrap().clone();
         AsyncComputeTaskPool::get()
             .spawn(async move {
                 let _ = sender.send(message).await;
@@ -70,7 +76,8 @@ fn subscriber<T: RosTopic>(node: &mut Node, signal: Arc<AtomicBool>) -> TopicSub
 }
 
 fn publisher<T: RosTopic>(node: &mut Node, signal: Arc<AtomicBool>) -> TopicPublisher<T> {
-    let (sender, mut receiver) = mpsc::channel(1024);
+    let capacity = if matches!(T::TOPIC, "/image_raw" | "/image_compressed" | "/livox/lidar") { 1 } else { 1024 };
+    let (sender, mut receiver) = mpsc::channel(capacity);
 
     let publisher = node.create_publisher(T::TOPIC, T::QOS).unwrap();
 

@@ -1,0 +1,24 @@
+[
+  {
+    "size": "small",
+    "asset": "vehicle.glb",
+    "asset_sha256": "1cc0a3cd1ab05bc9822b616271db3afb64d078e56b9bbf452a8acc6d9bad0a6f",
+    "CENTER_node": 10,
+    "MARKER_node": 15,
+    "lamp_nodes": [
+      11,
+      13
+    ]
+  },
+  {
+    "size": "large",
+    "asset": "HERO.glb",
+    "asset_sha256": "e10fe48e41bbd4ffd89e5fc8359fa0ba5df656ce178d750b750c30eb7e2d1a4c",
+    "CENTER_node": 8,
+    "MARKER_node": 13,
+    "lamp_nodes": [
+      9,
+      11
+    ]
+  }
+]

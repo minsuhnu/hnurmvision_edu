@@ -1,0 +1,74 @@
+{
+  "files": {
+    "static_target.mp4": {
+      "bytes": 821639,
+      "sha256": "f04aca21ecf0123a6d23eab3c3f77b520ff32bc533231dd8689d503d352ccdd8"
+    },
+    "moving_target.mp4": {
+      "bytes": 3902038,
+      "sha256": "fe0360be28a9cbc9242c6235d478dc7085fce3a75aaf8109dc04af1de1724056"
+    },
+    "static_target.png": {
+      "bytes": 652822,
+      "sha256": "af11e325d5b6c07ba655df4a1fdb2461ba1e4a19f73c76df8648418945f919b2"
+    },
+    "moving_target.png": {
+      "bytes": 662624,
+      "sha256": "76c42a05e5480a022dc6f58c93f87fbf9842c2e0c72109253501b59546835a39"
+    },
+    "static_target_detection.png": {
+      "bytes": 1288034,
+      "sha256": "9faf3068f9acaf2a43fcd87c45e56ce409af7ed8cd51c9d7eab767b30e1a2561"
+    },
+    "moving_target_detection.png": {
+      "bytes": 1280301,
+      "sha256": "aa676937515871038051f5a973298dec99a2869696f37362c55eecc65e4564a7"
+    },
+    "learning_summary.md": {
+      "bytes": 576,
+      "sha256": "4a9033ba209ce7829475ce2f77a48987f15363ec5e05f9c97db8866c34efa3fa"
+    },
+    "acceptance_report.md": {
+      "bytes": 5579,
+      "sha256": "1949e7f468276ef00e959ea624be1fe079ca9aff2b5453c6d4a48b56bea14e90"
+    },
+    "verification.json": {
+      "bytes": 1831,
+      "sha256": "0739be31ff9b21f922108fe379fd3ec6c4e567f4f9f5e1f2cf274b2d6ed7039d"
+    },
+    "prediction_evidence.json": {
+      "bytes": 1371,
+      "sha256": "beaf03433c28e08ac99d4a2fb2d4161e61396baeec1640368eb7121311b88393"
+    },
+    "static_target_scores.json": {
+      "bytes": 642,
+      "sha256": "49e07941a402dbd7ce6fd25ad05ff31432ba79ceb62398bc2bd49dc631325c9c"
+    },
+    "moving_target_scores.json": {
+      "bytes": 690,
+      "sha256": "34a642e8b306a0ec3a6eb99e0e7c46f23e31173afa5975106e9e2a8b7dc09d50"
+    },
+    "config.toml": {
+      "bytes": 5575,
+      "sha256": "c357784f391defad62d3cedc32a5ef1938cab2d2dfd53c45d277200e960cd01b"
+    },
+    "simulation.yaml": {
+      "bytes": 591,
+      "sha256": "2f5ab20a9e633e6dcc02c0404dd71f477d3b08263053f58cfd3ee0b80863f97c"
+    },
+    "run.json": {
+      "bytes": 647,
+      "sha256": "9a9dfe04c722a446906d9862a61afda8908537eead93440bc9afaf4bfcf88027"
+    }
+  },
+  "source_sha256": {
+    "lessons/lesson05_aiming.cpp": "1b5f116ecd791909989c91ad4c26329785b3474cf4871e58b42f6a805fdb0866",
+    "lessons/lesson02_io.cpp": "3b2f040077f2273ed61d625d5df9a92489cb9d4f548edcb42c0e0d1d1fed5d75",
+    "src/realtime_processor.cpp": "00a4187a410ca4d36a76d85d92808301332c44a790c2109a0ee6a956721a15ef",
+    "src/main.cpp": "aee6096ad055d5db4495991aabd31efe36dfeb6fc455aec6ad935cced156220b",
+    "configs/lesson05_tracking.yaml": "e394e7d0dd58dec4514f98ac94c53f40532dfdc57b9a6ba675a3db7ce6e9ef6b",
+    "simulation/simulator/config.toml": "c357784f391defad62d3cedc32a5ef1938cab2d2dfd53c45d277200e960cd01b",
+    "simulation/simulator/target/release/daedalus": "8a83c8cbd454523f24285e0bbb087097149fc238e7af67afe12efe9065adfa4c",
+    "build-week05/training": "85c1476d0811063610ca5c969292f6494e7cf668a2e7d44e6b134420dba2ffdb"
+  }
+}

@@ -37,6 +37,9 @@ pub struct SimulationConfig {
 #[derive(Deserialize, Reflect, Clone)]
 pub struct WindowConfig {
     pub present_mode: String,
+    /// Optional application-frame cap. Physics still uses its independent fixed clock.
+    #[serde(default)]
+    pub max_fps: f64,
 }
 
 impl Default for WindowConfig {
@@ -44,6 +47,7 @@ impl Default for WindowConfig {
         Self {
             // Uncap rendering by default so off-screen capture (Talos/ROS2) can exceed 60Hz.
             present_mode: "auto_no_vsync".to_string(),
+            max_fps: 0.0,
         }
     }
 }

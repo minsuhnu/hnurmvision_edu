@@ -1,0 +1,89 @@
+{
+  "static_target": {
+    "frames": 619,
+    "fps": 20.0,
+    "duration_s": 30.95,
+    "width": 1600,
+    "height": 900,
+    "codec": "avc1",
+    "bytes": 821639,
+    "sha256": "f04aca21ecf0123a6d23eab3c3f77b520ff32bc533231dd8689d503d352ccdd8",
+    "processed_frames": 1810,
+    "processing_ms": {
+      "median": 13.2883765,
+      "p95": 15.818679
+    },
+    "age_ms": {
+      "median": 43.570555,
+      "p95": 51.303077
+    },
+    "valid_controls": 1810
+  },
+  "moving_target": {
+    "frames": 617,
+    "fps": 20.0,
+    "duration_s": 30.85,
+    "width": 1600,
+    "height": 900,
+    "codec": "avc1",
+    "bytes": 3902038,
+    "sha256": "fe0360be28a9cbc9242c6235d478dc7085fce3a75aaf8109dc04af1de1724056",
+    "processed_frames": 1809,
+    "processing_ms": {
+      "median": 13.901392,
+      "p95": 16.635101
+    },
+    "age_ms": {
+      "median": 45.563037,
+      "p95": 53.323003
+    },
+    "valid_controls": 1809
+  },
+  "physical_impacts_all_session": {
+    "(0, 'Armor')": 300,
+    "(0, 'Body')": 1,
+    "(None, 'Environment')": 1,
+    "(1, 'Armor')": 250,
+    "(1, 'Body')": 17
+  },
+  "processes": {
+    "actions": [
+      {
+        "key": "F8",
+        "monotonic": 385.881655942
+      },
+      {
+        "key": "F7",
+        "monotonic": 386.062534859
+      },
+      {
+        "key": "F7",
+        "monotonic": 416.272537585
+      },
+      {
+        "key": "F9",
+        "monotonic": 416.958301921
+      },
+      {
+        "key": "F6",
+        "monotonic": 417.253550019
+      },
+      {
+        "key": "F7",
+        "monotonic": 419.436169256
+      },
+      {
+        "key": "F7",
+        "monotonic": 449.646655572
+      },
+      {
+        "key": "F9",
+        "monotonic": 450.203201753
+      }
+    ],
+    "simulator_returncode": 0,
+    "training_returncode": 0,
+    "seconds_per_scene": 30.0,
+    "recorded": true
+  }
+}

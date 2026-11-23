@@ -19,10 +19,11 @@ use r2r::Clock;
 use r2r::sensor_msgs::msg::{CameraInfo, RegionOfInterest};
 use r2r::std_msgs::msg::Header;
 use std::cell::RefCell;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, OnceLock};
 
 struct RosSnapshotSync {
     stamp: RefCell<r2r::builtin_interfaces::msg::Time>,
+    audit_ticket: Option<crate::capture_audit::FrameTicket>,
 }
 
 impl SnapshotSync for RosSnapshotSync {
@@ -36,6 +37,7 @@ impl SnapshotSync for RosSnapshotSync {
         let ctx = world.resource::<RosCaptureContextShared>().0.clone();
         Box::new(RosSnapshot {
             stamp: self.stamp,
+            audit_ticket: self.audit_ticket,
             ctx,
         })
     }
@@ -43,12 +45,16 @@ impl SnapshotSync for RosSnapshotSync {
 
 struct RosSnapshot {
     stamp: RefCell<r2r::builtin_interfaces::msg::Time>,
+    audit_ticket: Option<crate::capture_audit::FrameTicket>,
     ctx: Arc<RosCaptureContext>,
 }
 
 impl SnapshotAsync for RosSnapshot {
     fn captured(&mut self, frame: CapturedFrame<'_>) {
         if frame.kind != CapturedFrameKind::Rgb8 {
+            if let Some(ticket) = &mut self.audit_ticket {
+                ticket.reject_format();
+            }
             return;
         }
 
@@ -68,6 +74,16 @@ impl SnapshotAsync for RosSnapshot {
         } else {
             frame.data
         };
+
+        // This is the very same post-noise RGB slice passed to raw_image below.
+        // Export is nonblocking and failure never changes the original publication.
+        if let Some(ticket) = &mut self.audit_ticket {
+            let stamp = self.stamp.borrow();
+            let seed = stamp.sec as u32 ^ (stamp.nanosec >> 8);
+            let _ = ticket.post_noise_rgb(
+                frame.width, frame.height, data, self.ctx.noise_sigma, seed,
+            );
+        }
 
         let optical_frame_hdr = Header {
             stamp: self.stamp.take(),
@@ -98,15 +114,20 @@ impl SnapshotAsync for RosSnapshot {
 }
 
 #[derive(Default)]
-struct RosSnapshotCreator {}
+struct RosSnapshotCreator {
+    // Set once to CaptureBundle's actual color target, independent of ImageHandle.
+    audit_source: Arc<OnceLock<Handle<Image>>>,
+}
 
 impl GpuCaptureHandler for RosSnapshotCreator {
     fn captured(&self, world: &World) -> Option<Box<dyn SnapshotSync>> {
         let clock = world.resource::<RosCaptureContext>();
+        let stamp = Clock::to_builtin_time(&clock.clock.lock().unwrap().get_now().unwrap());
         Some(Box::new(RosSnapshotSync {
-            stamp: RefCell::new(Clock::to_builtin_time(
-                &clock.clock.lock().unwrap().get_now().unwrap(),
-            )),
+            stamp: RefCell::new(stamp.clone()),
+            // The existing driver puts this object in the same tuple as the
+            // actual copy destination buffer; no FIFO/time-based metadata lookup.
+            audit_ticket: crate::capture_audit::ticket_for_copy(world, self.audit_source.get(), stamp.sec, stamp.nanosec),
         }))
     }
 }
@@ -126,6 +147,12 @@ pub struct RosCaptureContext {
     pub image_compressed: TopicPublisher<ImageCompressedTopic>,
 }
 
+#[derive(Resource)]
+pub(crate) struct RosAuditCopySource(Handle<Image>);
+impl RosAuditCopySource {
+    pub(crate) fn handle(&self) -> &Handle<Image> { &self.0 }
+}
+
 pub struct RosCapturePlugin {
     pub config: CaptureConfig,
     pub context: RosCaptureContext,
@@ -133,18 +160,21 @@ pub struct RosCapturePlugin {
 
 impl Plugin for RosCapturePlugin {
     fn build(&self, app: &mut App) {
+        let audit_source = Arc::new(OnceLock::new());
         let capture = CaptureBundle::color_and_depth(
             app,
             self.config.clone(),
             vec![
-                Box::new(RosSnapshotCreator::default()),
+                Box::new(RosSnapshotCreator { audit_source: audit_source.clone() }),
                 Box::new(DatasetSnapshotCreator::default()),
             ],
             vec![Box::new(DatasetSnapshotCreator::depth())],
         );
         let render_target_handle = capture.color_target().unwrap().clone();
+        audit_source.set(render_target_handle.clone()).expect("ROS copy source initialized once");
 
         app.add_plugins(capture)
+            .insert_resource(RosAuditCopySource(render_target_handle.clone()))
             .insert_resource(ImageHandle(render_target_handle))
             .insert_resource(CameraFov(self.context.fov_y))
             .insert_resource(self.context.clone())

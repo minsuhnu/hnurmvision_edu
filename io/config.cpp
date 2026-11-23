@@ -24,6 +24,9 @@ Config load_config(const std::string& path) {
   Config c;
   if (y["display"]) c.display = y["display"].as<bool>();
   if (y["allow_fire"]) c.allow_fire = y["allow_fire"].as<bool>();
+  if (y["fire_tolerance_rad"]) c.fire_tolerance_rad = y["fire_tolerance_rad"].as<double>();
+  if (!std::isfinite(c.fire_tolerance_rad) || c.fire_tolerance_rad <= 0 || c.fire_tolerance_rad > kPi)
+    throw std::runtime_error("无效的开火角度容差");
   read_array(y, "camera_matrix", c.camera_matrix);
   read_array(y, "distort_coeffs", c.distort_coeffs);
   read_array(y, "R_camera2gimbal", c.camera_to_gimbal);
